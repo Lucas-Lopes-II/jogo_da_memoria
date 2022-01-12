@@ -15,14 +15,15 @@ let techs = [
 ];
 
 createCardsFromTechs(techs);
+console.log(cards)
 function createCardsFromTechs(techs){
     let cards= [];
 
     for(let tech of techs){
         cards.push(createPairFromTech(tech));
     }
-
     return cards.flatMap(pair => pair);
+    
 }
 
 function createPairFromTech(tech){
@@ -30,12 +31,12 @@ function createPairFromTech(tech){
         {
             id: createIdWithTech(tech),
             icon: tech,
-            flrpped: false
+            flipped: false
         }, 
         {
             id: createIdWithTech(tech),
             icon: tech,
-            flrpped: false
+            flipped: false
         }
     ]
 }

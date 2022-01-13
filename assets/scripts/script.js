@@ -15,7 +15,7 @@ let techs = [
 ];
 
 createCardsFromTechs(techs);
-console.log(cards)
+
 function createCardsFromTechs(techs){
     let cards= [];
 

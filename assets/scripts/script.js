@@ -14,6 +14,14 @@ let techs = [
     'react',
 ];
 
+let cards = null;
+
+startGame();
+
+function startGame(){
+    cards = createCardsFromTechs(techs);
+}
+
 createCardsFromTechs(techs);
 
 function createCardsFromTechs(techs){

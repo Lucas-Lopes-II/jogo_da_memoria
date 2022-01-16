@@ -20,6 +20,20 @@ startGame();
 
 function startGame(){
     cards = createCardsFromTechs(techs);
+
+    shuffleCards(cards);
+}
+
+function shuffleCards(cards){
+    let currentIndex = cards.length;
+    let randomIndex = 0;
+
+    while(currentIndex != 0){
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
+    }
 }
 
 createCardsFromTechs(techs);

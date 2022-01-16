@@ -1,4 +1,5 @@
 let game = {
+    
     techs: [
         'bootstrap',
         'css',
@@ -13,14 +14,15 @@ let game = {
     ],
     cards: null,
 
-    createCardsFromTechs: function(techs){
+    createCardsFromTechs: function(){
         this.cards= [];
     
-        techs.forEach((tech) => {
+        this.techs.forEach((tech) => {
             this.cards.push(this.createPairFromTech(tech));
         });
-        return this.cards.flatMap(pair => pair);
-        
+        this.cards = this.cards.flatMap(pair => pair);
+        this.shuffleCards();
+        return this.cards;
     },
     
     createPairFromTech: function(tech){
@@ -40,5 +42,17 @@ let game = {
     
     createIdWithTech: function(tech){
         return tech + parseInt(Math.random() * 1000)
+    },
+
+    shuffleCards: function(){
+        let currentIndex = this.cards.length;
+        let randomIndex = 0;
+    
+        while(currentIndex != 0){
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+    
+            [this.cards[currentIndex], this.cards[randomIndex]] = [this.cards[randomIndex], this.cards[currentIndex]];
+        }
     }
 }

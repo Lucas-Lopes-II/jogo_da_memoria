@@ -4,16 +4,13 @@ const BACK = 'card_back'
 startGame();
 
 function startGame(){
-    cards = createCardsFromTechs(techs);
-    shuffleCards(cards);
-
-    initializeCards(cards);
+    initializeCards(game.createCardsFromTechs());
 }
 
 function initializeCards(cards){
     let gameBoard = document.getElementById('gameBoard');
 
-    cards.forEach((card) => {
+    game.cards.forEach((card) => {
         let cardElement = document.createElement('div');
         cardElement.id = card.id;
         cardElement.classList.add('card'); 
@@ -48,18 +45,6 @@ function createCardFace(face, card, element) {
         cardElementFace.innerHTML = '&lt/&gt';
     }
     element.appendChild(cardElementFace);
-}
-
-function shuffleCards(cards){
-    let currentIndex = cards.length;
-    let randomIndex = 0;
-
-    while(currentIndex != 0){
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-
-        [cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
-    }
 }
 
 createCardsFromTechs(techs);

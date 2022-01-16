@@ -1,5 +1,5 @@
-const front = 'card_front'
-const back = 'card_back'
+const FRONT = 'card_front'
+const BACK = 'card_back'
 
 let techs = [
     'bootstrap',
@@ -34,13 +34,35 @@ function initializeCards(cards){
         cardElement.classList.add('card'); 
         cardElement.dataset.icon = card.icon;
 
+        createCardContent(card, cardElement);
+
+        cardElement.addEventListener('click', flipCard);
         gameBoard.appendChild(cardElement);
 
 
 
     });
+}
 
+function createCardContent(card, cardElement) {
+    createCardFace(FRONT, card, cardElement);
+    createCardFace(BACK, card, cardElement);
+}
 
+function createCardFace(face, card, element) {
+    let cardElementFace = document.createElement('div');
+    cardElementFace.classList.add(face);
+
+    if(face == FRONT){
+        let iconElement = document.createElement('img')
+        iconElement.classList.add('icon');
+        iconElement.src = `./assets/images/${card.icon}.png`
+        cardElementFace.appendChild(iconElement);
+
+    }else{
+        cardElementFace.innerHTML = '&lt/&gt';
+        element.appendChild(cardElementFace);
+    }
 }
 
 function shuffleCards(cards){
@@ -86,3 +108,6 @@ function createIdWithTech(tech){
     return tech + parseInt(Math.random() * 1000)
 }
 
+function flipCard(){
+    this.classList.add('flip');
+}

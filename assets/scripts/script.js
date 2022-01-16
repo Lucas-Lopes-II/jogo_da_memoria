@@ -53,16 +53,16 @@ function createCardFace(face, card, element) {
     let cardElementFace = document.createElement('div');
     cardElementFace.classList.add(face);
 
-    if(face == FRONT){
-        let iconElement = document.createElement('img')
+    if(face === FRONT){
+        let iconElement = document.createElement('img');
         iconElement.classList.add('icon');
-        iconElement.src = `./assets/images/${card.icon}.png`
+        iconElement.src = `./assets/images/${card.icon}.png`;
         cardElementFace.appendChild(iconElement);
 
     }else{
         cardElementFace.innerHTML = '&lt/&gt';
-        element.appendChild(cardElementFace);
     }
+    element.appendChild(cardElementFace);
 }
 
 function shuffleCards(cards){

@@ -12,10 +12,11 @@ let game = {
         'node',
         'react',
     ],
+    
     cards: null,
 
     createCardsFromTechs: function(){
-        this.cards= [];
+        this.cards = [];
     
         this.techs.forEach((tech) => {
             this.cards.push(this.createPairFromTech(tech));
@@ -41,7 +42,7 @@ let game = {
     },
     
     createIdWithTech: function(tech){
-        return tech + parseInt(Math.random() * 1000)
+        return tech + parseInt(Math.random() * 1000);
     },
 
     shuffleCards: function(){

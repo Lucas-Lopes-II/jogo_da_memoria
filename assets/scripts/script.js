@@ -49,8 +49,20 @@ function createCardFace(face, card, element) {
 
 function flipCard(){
 
-    if(game.setCard(this.card.id)){
+    if(game.setCard(this.id)){
+
         this.classList.add('flip');
-        game.checkMatch();
+        if(game.checkMatch()){
+            game.clearCards();
+        }else{
+            setTimeout(() => {
+            let firstCardView = document.getElementById(game.firstCard.id);
+            let secundCardCardView = document.getElementById(game.secundCard.id);
+
+            firstCardView.classList.remove('flip');
+            secundCardCardView.classList.remove('flip');
+            game.clearCards();
+            }, 1000)
+        };
     }
 }

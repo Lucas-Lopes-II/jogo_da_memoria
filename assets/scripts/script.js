@@ -47,8 +47,6 @@ function createCardFace(face, card, element) {
     element.appendChild(cardElementFace);
 }
 
-createCardsFromTechs(techs);
-
 function flipCard(){
     this.classList.add('flip');
 }

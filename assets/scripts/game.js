@@ -1,4 +1,25 @@
 let game = {
+
+    lockMode: false,
+    firstCard: null,
+    secundCard: null,
+
+    setCard: function(id){
+        let card = this.cards.filter(card => card.id === id)[0];
+
+        if(card.flipped || this.lockMode){
+            return false;
+        }
+
+        if(!this.firstCard){
+            this.firstCard = card;
+            return true;
+        }else{
+            this.secundCard = card;
+            this.lockMode = true;
+            return true;
+        }
+    },
     
     techs: [
         'bootstrap',
@@ -15,7 +36,7 @@ let game = {
     cards: null,
 
     createCardsFromTechs: function(){
-        this.cards= [];
+        this.cards = [];
     
         this.techs.forEach((tech) => {
             this.cards.push(this.createPairFromTech(tech));

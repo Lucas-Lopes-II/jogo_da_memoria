@@ -43,6 +43,7 @@ let game = {
         'node',
         'react',
     ],
+    
     cards: null,
 
     createCardsFromTechs: function(){
@@ -72,7 +73,7 @@ let game = {
     },
     
     createIdWithTech: function(tech){
-        return tech + parseInt(Math.random() * 1000)
+        return tech + parseInt(Math.random() * 1000);
     },
 
     shuffleCards: function(){

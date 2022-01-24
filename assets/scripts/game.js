@@ -20,6 +20,16 @@ let game = {
             return true;
         }
     },
+
+    checkMatch: function(){
+        return this.firstCard.icon === this.secundCard.icon;
+    },
+
+    clearCards: function(){
+        this.lockMode = false;
+        this.firstCard = null;
+        this.secundCard = null;
+    },
     
     techs: [
         'bootstrap',

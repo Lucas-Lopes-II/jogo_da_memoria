@@ -51,5 +51,6 @@ function flipCard(){
 
     if(game.setCard(this.card.id)){
         this.classList.add('flip');
+        game.checkMatch();
     }
 }

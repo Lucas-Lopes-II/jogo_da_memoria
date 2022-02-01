@@ -13,15 +13,20 @@ let game = {
 
         if(!this.firstCard){
             this.firstCard = card;
+            this.firstCard.flipped = true;
             return true;
         }else{
             this.secundCard = card;
+            this.secundCard.flipped = true;
             this.lockMode = true;
             return true;
         }
     },
 
     checkMatch: function(){
+        if(!this.firstCard || !this.secundCard){
+            return false;
+        };
         return this.firstCard.icon === this.secundCard.icon;
     },
 
@@ -29,6 +34,12 @@ let game = {
         this.lockMode = false;
         this.firstCard = null;
         this.secundCard = null;
+    },
+
+    unflipCards: function(){
+        this.firstCard.flipped = false;
+        this.secundCard.flipped = false;
+        this.clearCards();
     },
     
     techs: [

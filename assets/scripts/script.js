@@ -52,17 +52,19 @@ function flipCard(){
     if(game.setCard(this.id)){
 
         this.classList.add('flip');
-        if(game.checkMatch()){
-            game.clearCards();
-        }else{
-            setTimeout(() => {
-            let firstCardView = document.getElementById(game.firstCard.id);
-            let secundCardCardView = document.getElementById(game.secundCard.id);
+        if(game.secundCard){
+            if(game.checkMatch()){
+                game.clearCards();
+            }else{
+                setTimeout(() => {
+                let firstCardView = document.getElementById(game.firstCard.id);
+                let secundCardCardView = document.getElementById(game.secundCard.id);
 
-            firstCardView.classList.remove('flip');
-            secundCardCardView.classList.remove('flip');
-            game.clearCards();
-            }, 1000)
-        };
+                firstCardView.classList.remove('flip');
+                secundCardCardView.classList.remove('flip');
+                game.unflipCards();
+                }, 1000)
+            };
+        }
     }
 }

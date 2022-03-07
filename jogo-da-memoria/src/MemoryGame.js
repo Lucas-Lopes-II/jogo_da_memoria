@@ -17,6 +17,7 @@ export default function MemoryGame() {
           if(game.checkMatch()){
             game.clearCards();
             if(game.checkGameOver()){
+              setGameOver(true);
             }
           }else{
             setTimeout(() => {
@@ -30,7 +31,9 @@ export default function MemoryGame() {
     }
 
     const handleRestart = () => {
-        setGameOver(false);
+      game.clearCards();
+      setCards(game.createCardsFromTechs());
+      setGameOver(false);
     }
 
   return (

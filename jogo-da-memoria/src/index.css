@@ -9,8 +9,8 @@ body {
 }
 
 .card {
-   width: 135px;
-   height: 135px;
+   width: 130px;
+   height: 130px;
    position: relative;
    transform-style: preserve-3d;
    transition: transform 0.5s;
@@ -69,11 +69,10 @@ body {
 }
 
 #gameBoard {
-  margin: 70px 0 0 5px;
+  margin: 40px 0 0 5px;
   height: 75vh;
   max-width: 900px;
   display: grid;
   grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
   gap: 20px;
-
 }

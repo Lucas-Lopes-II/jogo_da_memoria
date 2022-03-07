@@ -101,6 +101,24 @@ let game = {
     
             [this.cards[currentIndex], this.cards[randomIndex]] = [this.cards[randomIndex], this.cards[currentIndex]];
         }
+    },
+
+    flipCard: function(cardId, gameOverCallback, noMatchCallback) {
+        if(this.setCard(cardId)){
+            if(this.secundCard){
+                if(this.checkMatch()){
+                    this.clearCards();
+                    if(this.checkGameOver()){
+                    gameOverCallback();
+                    }
+                }else{
+                    setTimeout(() => {
+                        this.unflipCards();
+                        noMatchCallback();
+                    }, 1000);
+                }
+            }
+        }
     }
 }
 

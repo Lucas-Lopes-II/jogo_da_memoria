@@ -9,7 +9,25 @@ export default function MemoryGame() {
 
     useEffect(() => {
       setCards(game.createCardsFromTechs());
-    }, [])
+    }, []);
+
+    const handleFlip = (card) => {
+      if(game.setCard(card.id)){
+        if(game.secundCard){
+          if(game.checkMatch()){
+            game.clearCards();
+            if(game.checkGameOver()){
+            }
+          }else{
+            setTimeout(() => {
+              game.unflipCards();
+              setCards([...game.cards]);
+            }, 1000);
+          }
+        }
+      }
+      setCards([...game.cards]);
+    }
 
     const handleRestart = () => {
         setGameOver(false);
@@ -17,7 +35,7 @@ export default function MemoryGame() {
 
   return (
     <>
-    <GameBoard cards={cards}/>
+    <GameBoard cards={cards} handleFlip={handleFlip}/>
     <GameOver show={gameOver} handleRestart={handleRestart}/>
     </>
   )

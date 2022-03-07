@@ -39,7 +39,7 @@ let game = {
     checkMatch: function(){
         if(!this.firstCard || !this.secundCard){
             return false;
-        };
+        }
         return this.firstCard.icon === this.secundCard.icon;
     },
 
@@ -56,7 +56,7 @@ let game = {
     },
 
     checkGameOver: function(){
-        return this.cards.filter(card => !card.flipped). length == 0;
+        return this.cards.filter(card => !card.flipped).length === 0;
     },
     
     cards: null,
@@ -95,11 +95,31 @@ let game = {
         let currentIndex = this.cards.length;
         let randomIndex = 0;
     
-        while(currentIndex != 0){
+        while(currentIndex !== 0){
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
     
             [this.cards[currentIndex], this.cards[randomIndex]] = [this.cards[randomIndex], this.cards[currentIndex]];
         }
+    },
+
+    flipCard: function(cardId, gameOverCallback, noMatchCallback) {
+        if(this.setCard(cardId)){
+            if(this.secundCard){
+                if(this.checkMatch()){
+                    this.clearCards();
+                    if(this.checkGameOver()){
+                    gameOverCallback();
+                    }
+                }else{
+                    setTimeout(() => {
+                        this.unflipCards();
+                        noMatchCallback();
+                    }, 1000);
+                }
+            }
+        }
     }
 }
+
+export default game;

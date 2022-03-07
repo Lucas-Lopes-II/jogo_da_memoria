@@ -1,5 +1,5 @@
 ﻿ # Jogo da memoria
->Jogo da memória divertido e simples, criado com HTML, CSS e JavaScript. 
+>Jogo da memória divertido e simples, criado com JavaScript, HTML e CSS, postriormente migrado para ReactJS. 
 ---
 ![Jogo da memória](readme/img/jogmem.gif)
 <br/><br/><br/>
@@ -32,6 +32,8 @@
 ✔ HTML
 
 ✔ CSS
+
+✔ ReactJS
 
 
 ## Meta
